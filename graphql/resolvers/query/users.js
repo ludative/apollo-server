@@ -1,10 +1,10 @@
-import models from "../models";
+import models from "../../models";
 
 const getUsers = async () => {
   const users = await models.User.findAndCountAll({
     where: {
-      deleted: false,
-    },
+      deleted: false
+    }
   });
   return users;
 };
@@ -15,7 +15,7 @@ const getUserById = async (_, { id }) => {
 
 const usersQuery = {
   getUsers,
-  getUserById,
+  getUserById
 };
 
 export default usersQuery;

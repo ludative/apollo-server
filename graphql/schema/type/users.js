@@ -20,9 +20,11 @@ type adminUser implements User {
   updatedAt: String
 }
 
-type GetUsers {
-  count: Int
-  rows: [normalUser]
+union Users = normalUser | adminUser
+
+type GetUsers implements IPagination {
+  count: Int!
+  rows: [Users]
 }
 `;
 export default { type };

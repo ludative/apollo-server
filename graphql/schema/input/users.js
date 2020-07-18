@@ -11,8 +11,6 @@ input UpdateUser {
   nickname: String
   isAdmin: Boolean
 }
-
-input DeleteUser {
-  id: ID!
-}
 `;
+
+// Input type은 세 개이상일 때, 사용

@@ -1,9 +1,9 @@
-import models from "../models";
+import models from "../../models";
 
 const getPosts = async () => {
   try {
     const posts = await models.Post.findAndCountAll({
-      where: { deleted: false },
+      where: { deleted: false }
     });
 
     return posts;
@@ -23,5 +23,5 @@ const getPostById = async (_, { id }) => {
 
 export default {
   getPosts,
-  getPostById,
+  getPostById
 };

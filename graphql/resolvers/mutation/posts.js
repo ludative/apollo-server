@@ -2,7 +2,7 @@
  * Sequalize <=> MySql
  */
 
-import models from "../models";
+import models from "../../models";
 
 const createPost = async (_, { post }) => {
   try {
@@ -41,5 +41,5 @@ const deletePost = async (_, { id }) => {
 export default {
   createPost,
   updatePost,
-  deletePost,
+  deletePost
 };

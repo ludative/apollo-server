@@ -1,17 +1,19 @@
-import usersQuery from "./query/users";
-import usersMutation from "./mutation/users";
+import usersQuery from "./resolvers/query/users";
+import usersMutation from "./resolvers/mutation/users";
 
-import postsQuery from "./query/posts";
-import postsMutation from "./mutation/posts";
+import postsQuery from "./resolvers/query/posts";
+import postsMutation from "./resolvers/mutation/posts";
 
 const resolvers = {
-  User: {
+  Users: {
     __resolveType(user, context, info) {
-      return user.isAdmin ? "adminUser" : "normalUser";
-    },
+      return user.isAdmin
+        ? info.schema.getType("adminUser")
+        : info.schema.getType("normalUser");
+    }
   },
   Query: { ...usersQuery, ...postsQuery },
-  Mutation: { ...usersMutation, ...postsMutation },
+  Mutation: { ...usersMutation, ...postsMutation }
 };
 
 export default resolvers;

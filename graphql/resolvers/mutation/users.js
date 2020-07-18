@@ -3,14 +3,14 @@
  */
 
 import bcrypt from "bcrypt-nodejs";
-import models from "../models";
+import models from "../../models";
 
 const createUser = async (_, { params }) => {
   try {
     const { password } = params;
     const user = await models.User.create({
       ...params,
-      password: bcrypt.hashSync(password),
+      password: bcrypt.hashSync(password)
     });
 
     return user;
@@ -25,7 +25,7 @@ const updateUser = async (_, { params }) => {
     const user = await models.User.findByPk(params.id);
     await user.update({
       ...params,
-      password: password ? bcrypt.hashSync(password) : user.password,
+      password: password ? bcrypt.hashSync(password) : user.password
     });
 
     return user;
@@ -50,5 +50,5 @@ const deleteUser = async (_, { id }) => {
 export default {
   createUser,
   updateUser,
-  deleteUser,
+  deleteUser
 };

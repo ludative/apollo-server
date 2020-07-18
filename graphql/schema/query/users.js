@@ -1,3 +1,4 @@
 export default `
   getUsers: GetUsers
-  getUserById(id: Int!): normalUser`;
+  getUserById(id: Int!): normalUser
+  `;
